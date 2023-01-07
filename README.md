@@ -15,6 +15,9 @@ ensure this `dotfiles` folder is in your root user directory
 1. Save and source the file
 1. Run `:PlugInstall`
 
+### Plugins for Vim if in a constrained environment
+TODO
+
 ## NeoVim
 TODO
 
