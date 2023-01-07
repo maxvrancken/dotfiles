@@ -10,16 +10,33 @@ set smartindent
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
 Plug 'ayu-theme/ayu-vim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'itchyny/lightline.vim'
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+let g:coc_node_path = "/usr/local/bin/node"
+
 call plug#end()
+
+au BufNewFile,BufRead *.ts setlocal filetype=typescript
+au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 
 set termguicolors     
 " enable true colors support 
-let ayucolor="dark" " for mirage version of theme 
-colorscheme ayu
+
+colorscheme tokyonight-night
+let g:lightline = {'colorscheme': 'tokyonight'}
 
 " Mapping leader key
 let mapleader = " "
