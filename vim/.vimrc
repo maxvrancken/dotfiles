@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'morhetz/gruvbox'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -26,18 +26,16 @@ Plug 'preservim/nerdtree'
 
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 let g:coc_node_path = "/usr/local/bin/node"
-
 call plug#end()
 
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
 au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 
 set termguicolors     
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " enable true colors support 
 
-colorscheme tokyonight-night
-let g:lightline = {'colorscheme': 'tokyonight'}
+colorscheme gruvbox
+let g:lightline = {'colorscheme': 'gruvbox'}
 
 " Mapping leader key
 let mapleader = " "

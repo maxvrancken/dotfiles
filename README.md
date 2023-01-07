@@ -9,11 +9,14 @@ ensure this `dotfiles` folder is in your root user directory
 1. Save and exit the file
 1. Source `.bashrc`
 
-## NeoVim
-1. Inside your `.config/nvim` folder, create a new `init.vim` file (create dirs if they don't exist).
-1. Open `init.vim` and paste in `source ~/dotfiles/nvim/init.vim`
+## Vim
+1. Create `.vimrc` if it doesn't exist yet
+1. Open `.vimrc` and paste in `source ~/dotfiles/vim/.vimrc`
 1. Save and source the file
 1. Run `:PlugInstall`
+
+## NeoVim
+TODO
 
 ### Plugins for NeoVim if in a constrained environment
 TODO
