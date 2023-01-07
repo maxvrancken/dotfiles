@@ -11,7 +11,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'ayu-theme/ayu-vim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 Plug 'tpope/vim-fugitive'
@@ -23,6 +22,7 @@ Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
 
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 let g:coc_node_path = "/usr/local/bin/node"
@@ -49,6 +49,11 @@ let mapleader = " "
 nnoremap <leader>pv :Ex<CR>
 " vertical split project view 
 nnoremap <leader>vpv :Vex<CR>
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 """"""""""""""""""
 " utility remaps "
