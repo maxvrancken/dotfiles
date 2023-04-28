@@ -1,5 +1,6 @@
 local lsp = require('lsp-zero').preset({})
 
+
 lsp.on_attach(function(client, bufnr)
     -- 	lsp.default_keymaps({buffer = bufnr})
     local opts = { buffer = bufnr, remap = false }
@@ -17,6 +18,18 @@ lsp.on_attach(function(client, bufnr)
 
     vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 end)
+
+lsp.ensure_installed({
+  -- Replace these with whatever servers you want to install
+  'jsonls',
+  'yamlls',
+  'tsserver',
+  'eslint',
+  'html',
+  'cssls',
+  'rust_analyzer',
+  'golangci_lint_ls'
+})
 
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
