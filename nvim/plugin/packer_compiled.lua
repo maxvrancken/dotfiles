@@ -109,7 +109,7 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["dashboard-nvim"] = {
-    config = { "\27LJ\2\2�\2\0\0\5\0\f\0\0196\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\3\0005\2\5\0005\3\4\0=\3\6\0024\3\4\0005\4\a\0>\4\1\0035\4\b\0>\4\2\0035\4\t\0>\4\3\3=\3\n\2=\2\v\1B\0\2\1K\0\1\0\vconfig\rshortcut\1\0\4\ngroup\vNumber\bkey\6d\vaction\23Telescope dotfiles\tdesc\17 dotfiles\1\0\4\ngroup\19DiagnosticHint\bkey\6a\vaction\18Telescope app\tdesc\r Apps\1\0\6\ficon_hl\14@variable\bkey\6f\vaction\25Telescope find_files\ngroup\nLabel\ticon\t \tdesc\nFiles\16week_header\1\0\0\1\0\1\venable\2\1\0\1\ntheme\nhyper\nsetup\14dashboard\frequire\0" },
+    config = { "\27LJ\2\2�\1\0\0\5\0\n\0\0156\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\3\0005\2\5\0005\3\4\0=\3\6\0024\3\3\0005\4\a\0>\4\1\3=\3\b\2=\2\t\1B\0\2\1K\0\1\0\vconfig\rshortcut\1\0\6\ficon_hl\14@variable\bkey\6f\vaction\25Telescope find_files\ngroup\nLabel\ticon\t \tdesc\nFiles\16week_header\1\0\0\1\0\1\venable\2\1\0\1\ntheme\nhyper\nsetup\14dashboard\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -120,6 +120,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/max/.local/share/nvim/site/pack/packer/start/deadcolumn.nvim",
     url = "https://github.com/Bekaboo/deadcolumn.nvim"
+  },
+  ["git-blame.nvim"] = {
+    loaded = true,
+    path = "/home/max/.local/share/nvim/site/pack/packer/start/git-blame.nvim",
+    url = "https://github.com/f-person/git-blame.nvim"
   },
   harpoon = {
     loaded = true,
@@ -162,6 +167,11 @@ _G.packer_plugins = {
     path = "/home/max/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-comment"] = {
+    loaded = true,
+    path = "/home/max/.local/share/nvim/site/pack/packer/start/nvim-comment",
+    url = "https://github.com/terrortylor/nvim-comment"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/max/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -202,6 +212,12 @@ _G.packer_plugins = {
     path = "/home/max/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["quicknote.nvim"] = {
+    config = { "\27LJ\2\2;\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\14quicknote\frequire\0" },
+    loaded = true,
+    path = "/home/max/.local/share/nvim/site/pack/packer/start/quicknote.nvim",
+    url = "https://github.com/RutaTang/quicknote.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/max/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -230,14 +246,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: SmoothCursor.nvim
-time([[Config for SmoothCursor.nvim]], true)
-try_loadstring("\27LJ\2\2:\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17smoothcursor\frequire\0", "config", "SmoothCursor.nvim")
-time([[Config for SmoothCursor.nvim]], false)
 -- Config for: neoscroll.nvim
 time([[Config for neoscroll.nvim]], true)
 try_loadstring("\27LJ\2\0027\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14neoscroll\frequire\0", "config", "neoscroll.nvim")
 time([[Config for neoscroll.nvim]], false)
+-- Config for: SmoothCursor.nvim
+time([[Config for SmoothCursor.nvim]], true)
+try_loadstring("\27LJ\2\2:\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17smoothcursor\frequire\0", "config", "SmoothCursor.nvim")
+time([[Config for SmoothCursor.nvim]], false)
+-- Config for: quicknote.nvim
+time([[Config for quicknote.nvim]], true)
+try_loadstring("\27LJ\2\2;\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\14quicknote\frequire\0", "config", "quicknote.nvim")
+time([[Config for quicknote.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-web-devicons ]]

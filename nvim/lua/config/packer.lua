@@ -20,45 +20,36 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+    -- UI (colors, syntax highlighting, etc...)
 
+    -- Colors
     use 'folke/tokyonight.nvim'
     vim.cmd [[colorscheme tokyonight]]
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
-    use('theprimeagen/harpoon')
-    use('mbbill/undotree')
-    use('tpope/vim-fugitive')
-
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-            {
-                -- Optional
-                'williamboman/mason.nvim',
-                run = function()
-                    pcall(vim.cmd, 'MasonUpdate')
-                end,
-            },
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
-        }
-    }
-
     use 'Bekaboo/deadcolumn.nvim'
 
+    -- Smooth scrolling and nav
+    use({
+        'gen740/SmoothCursor.nvim',
+        config = function()
+            require('smoothcursor').setup()
+        end
+    })
+    use({
+        'karb94/neoscroll.nvim',
+        config = function()
+            require('neoscroll').setup()
+        end
+    })
+
+    -- Bars and lines
+    use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
     use({
         "utilyre/barbecue.nvim",
         tag = "*",
@@ -72,23 +63,18 @@ return require('packer').startup(function(use)
         end,
     })
 
+    -- Navigational Tools
+
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        -- or                            , branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
     use('ggandor/leap.nvim')
-
-    use({
-        'gen740/SmoothCursor.nvim',
-        config = function()
-            require('smoothcursor').setup()
-        end
-    })
-
-    use({
-        'karb94/neoscroll.nvim',
-        config = function()
-            require('neoscroll').setup()
-        end
-    })
-
+    use('theprimeagen/harpoon')
     use('ms-jpq/chadtree', { branch = 'chad', run = 'python3 -m chadtree deps' })
+
+    -- Startup Dashboard
 
     use {
         'glepnir/dashboard-nvim',
@@ -109,18 +95,18 @@ return require('packer').startup(function(use)
                             action = 'Telescope find_files',
                             key = 'f',
                         },
-                        {
-                            desc = ' Apps',
-                            group = 'DiagnosticHint',
-                            action = 'Telescope app',
-                            key = 'a',
-                        },
-                        {
-                            desc = ' dotfiles',
-                            group = 'Number',
-                            action = 'Telescope dotfiles',
-                            key = 'd',
-                        },
+                        -- {
+                        --     desc = ' Apps',
+                        --     group = 'DiagnosticHint',
+                        --     action = 'Telescope app',
+                        --     key = 'a',
+                        -- },
+                        -- {
+                        --     desc = '󱘢 Content',
+                        --     group = 'Number',
+                        --     action = 'Telescope grep_string',
+                        --     key = 'd',
+                        -- },
                     },
                 },
             })
@@ -128,16 +114,47 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons' }
     }
 
+    -- Language Support
+
     use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+        'VonHeikemen/lsp-zero.nvim', -- LSP
+        branch = 'v2.x',
+        requires = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' }, -- Required
+            {
+                -- Optional
+                'williamboman/mason.nvim',
+                run = function()
+                    pcall(vim.cmd, 'MasonUpdate')
+                end,
+            },
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },     -- Required
+            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+            { 'L3MON4D3/LuaSnip' },     -- Required
+        }
     }
 
-    use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
 
-    use { "akinsho/toggleterm.nvim", tag = '*' }
+    -- Coding Utilities
 
-    use "klen/nvim-test"
+    use('mbbill/undotree')                                                                       -- Undotree
+    use { "akinsho/toggleterm.nvim", tag = '*' }                                                 -- Toggleable terminal
+    use "klen/nvim-test"                                                                         -- Testing
+    use "terrortylor/nvim-comment"
+    use { "RutaTang/quicknote.nvim", requires = { "nvim-lua/plenary.nvim" }, config = function() -- Note taking per file/line
+        require('quicknote')
+            .setup {}
+    end }
+
+
+    -- Version Control
+
+    use('tpope/vim-fugitive') -- Git Fugitive
+    use 'f-person/git-blame.nvim'
 
     if packer_bootstrap then
         require('packer').sync()
